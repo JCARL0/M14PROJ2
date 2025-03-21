@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>title</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>M14PROJ2</h1>
+
+    <!-- Formulario para filtrar los datos -->
+    <form method="post">
+        <label for="curso">Curso:</label>
+        <select name="curso" id="curso">
+            <option value="">-- Selecciona --</option>
+            {% for curso in filtros.cursos %}
+                <option value="{{ curso }}">{{ curso }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="centro">Centro:</label>
+        <select name="centro" id="centro">
+            <option value="">-- Selecciona --</option>
+            {% for centro in filtros.centros %}
+                <option value="{{ centro }}">{{ centro }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="naturaleza">Naturaleza:</label>
+        <select name="naturaleza" id="naturaleza">
+            <option value="">-- Selecciona --</option>
+            {% for naturaleza in filtros.naturalezas %}
+                <option value="{{ naturaleza }}">{{ naturaleza }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="area">Área Territorial:</label>
+        <select name="area" id="area">
+            <option value="">-- Selecciona --</option>
+            {% for area in filtros.areas %}
+                <option value="{{ area }}">{{ area }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="grado">Grado:</label>
+        <select name="grado" id="grado">
+            <option value="">-- Selecciona --</option>
+            {% for grado in filtros.grados %}
+                <option value="{{ grado }}">{{ grado }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="enseñanza">Enseñanza:</label>
+        <select name="enseñanza" id="enseñanza">
+            <option value="">-- Selecciona --</option>
+            {% for enseñanza in filtros.enseñanzas %}
+                <option value="{{ enseñanza }}">{{ enseñanza }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="modalidad">Modalidad:</label>
+        <select name="modalidad" id="modalidad">
+            <option value="">-- Selecciona --</option>
+            {% for modalidad in filtros.modalidades %}
+                <option value="{{ modalidad }}">{{ modalidad }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Consultar</button>
+    </form>
+
+    <!-- Mostrar los resultados si hay alguno -->
+    {% if resultados %}
+        <h2>Resultados:</h2>
+        <p>Total de estudiantes: {{ resultados.total }}</p>
+        <p>Mujeres: {{ resultados.mujeres }}</p>
+        <p>Hombres: {{ resultados.hombres }}</p>
+    {% endif %}
+</body>
+</html>
